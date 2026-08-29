@@ -1,0 +1,493 @@
+<!--
+  ============================================================================
+  HORUS PROSTHETICS — Newsletter mensual (email-safe)
+  Edición: SEPTIEMBRE 2026
+  Ronda 2 — SOLO DISEÑO: ritmo editorial con fondos alternados (negro/blanco),
+  columna más angosta, jerarquía tipográfica marcada, CTAs como enlaces
+  editoriales (no botones de venta), fotografía a sangre. El contenido de
+  texto es el mismo aprobado en la ronda anterior — no se agregó ni se quitó
+  información, solo se reorganizó visualmente. La única frase nueva es el
+  titular/subtítulo de la sección 01 ("De meses a horas." / "Cómo Horus está
+  transformando el proceso de fabricación de una prótesis."), dictada
+  explícitamente así en la conversación — el resto del texto de esa sección
+  no cambió.
+  ============================================================================
+  CÓMO USAR ESTE ARCHIVO
+  1. Ábrelo en VS Code. Busca la palabra EDITAR en los comentarios: cada uno
+     marca algo pendiente antes de enviar (URL, foto, dato).
+  2. Instala "Live Server" (Ritwick Dey) si quieres previsualizarlo en el
+     navegador mientras editas (clic derecho → "Open with Live Server").
+  3. Todo el CSS va inline a propósito — es lo que exigen Gmail, Outlook y el
+     resto de clientes de correo; una hoja de estilos externa se ignora en
+     la mayoría de ellos. El único bloque <style> en el <head> es progresivo:
+     los clientes que lo soportan (Apple Mail, Gmail app, Outlook móvil) lo
+     usan para ajustar tamaños en pantallas pequeñas; los que no, usan el
+     inline, que ya es seguro por sí solo.
+  4. Para enviar: copia TODO este archivo y pégalo en la opción
+     "importar HTML" / "pegar código" de Mailchimp o Brevo.
+
+  DIRECCIÓN VISUAL (ronda 2)
+  - Blanco y negro puro, sin acento de color, ritmo por bloques alternados:
+    header negro → intro blanco → 01 Innovación negro → 02 Historias blanco
+    → 03 Comunidad negro → 04 ¿Sabías que? blanco → footer negro.
+  - Columna de contenido angosta (520px) en vez de 600px, para que se lea
+    como una publicación editorial y no como una landing page.
+  - Cada sección sigue el mismo orden: número → etiqueta → titular grande →
+    subtítulo → (imagen, si aplica) → texto → fuente → CTA (si aplica).
+  - Las fotografías van a sangre (ancho completo de la columna, sin marco ni
+    borde) para que se sientan editoriales, no como tarjetas de producto.
+  - Los CTA son enlaces con subrayado y flecha, no bloques sólidos tipo botón
+    de venta.
+  - Se quitaron los divisores <hr>; el cambio de fondo negro/blanco ya marca
+    el ritmo entre bloques.
+
+  PENDIENTES DE ESTA EDICIÓN (sin cambios respecto a la ronda anterior)
+  - Sección 01: falta fotografía real del proceso Horus (placeholder abajo) y
+    confirmar a qué URL debe apuntar el enlace "Conoce nuestro proceso".
+  - Sección 02 (Karla Rojas): sin foto todavía — no había ninguna en el
+    proyecto y no se agregó una nueva. El contenido (incluye historial médico
+    y su relación como para-atleta de la familia HORUS) fue entregado
+    directamente en la conversación, no investigado de fuente pública — no
+    lleva línea de "Fuente:" porque no se proporcionó ninguna. Confirmar que
+    Karla autorizó el uso de su nombre, historia e historial médico antes de
+    enviar esta edición.
+  - Sección 03: no existe todavía un evento de septiembre 2026 confirmado en
+    IPD/CONADIS/ANPPERÚ. Se usa como alternativa la Academia IPD Paradeportes,
+    con enlace real a su portal oficial. Revisar de nuevo más cerca de la
+    fecha de envío por si aparece un evento puntual.
+  - Logo: la URL viene de horusleg.com. Un chequeo automático anterior dio
+    403 (probable protección anti-bot del CDN ante peticiones no-navegador)
+    — abre este archivo en el navegador para confirmar que carga antes de
+    enviar.
+
+  FUENTES DEL CONTENIDO REAL USADO EN ESTA EDICIÓN (verificar vigencia antes
+  de cada envío — no reutilizar datos viejos sin revisar)
+  - Proceso de fabricación Horus (Andreas Lehmann, 24–48h, 80+ personas,
+    98% satisfacción): horusleg.com/nosotros
+  - Historia de Karla Rojas: entregada directamente por el equipo de Horus en
+    la conversación (sin fuente pública externa) — verificar internamente
+    antes de enviar.
+  - Fisioterapia preprotésica: horusleg.com/biblioteca/fisioterapia-preprotesica
+  - Academia IPD Paradeportes: gob.pe/institucion/ipd — portal de
+    inscripción: appweb.ipd.gob.pe/academia/web/
+
+  RONDA 3 — SOLO TIPOGRAFÍA
+  Se cambió el nombre preferido de fuente en todos los font-family: Lemon
+  Milk para titulares (números de sección, etiquetas de sección, titulares
+  grandes) y Geometria para cuerpo (párrafos, subtítulos, CTA y footer).
+  - Titulares: 'Lemon Milk','Arial Black',Impact,'Franklin Gothic Bold',Arial,Helvetica,sans-serif
+  - Cuerpo:    'Geometria','Century Gothic',Futura,Arial,Helvetica,sans-serif
+  En un primer momento quedaron solo como "preferencia por nombre" (sin
+  @font-face) porque no existían los archivos de fuente en el proyecto.
+
+  RONDA 4 — FUENTES REALES (@font-face)
+  Se agregaron los archivos que colocaste en fonts/ (formatos .otf para
+  Lemon Milk y .ttf para Geometria — no son .woff/.woff2, pero @font-face
+  también acepta estos formatos) mediante reglas @font-face en el <style>
+  del <head>. Se registraron todas las variantes de peso que había en
+  fonts/ (ver detalle completo en la conversación), aunque el HTML de esta
+  edición solo usa Regular (400) y Bold (700) de cada familia — el resto
+  queda disponible para futuras ediciones sin tener que tocar el <head> de
+  nuevo. Esto sigue siendo mejora progresiva: los clientes que soportan
+  @font-face con fuentes locales (Apple Mail, Mail de iOS/Android, Gmail en
+  iOS/Android, la mayoría de navegadores) mostrarán Lemon Milk/Geometria de
+  verdad; Outlook de escritorio (motor Word) y Gmail webmail clásico no
+  soportan @font-face y seguirán mostrando el fallback de cada stack.
+
+  RONDA 5 — SOLO CONTENIDO DE LA SECCIÓN 02
+  Se reemplazó la historia de Rosa Espinoza por la de Karla Rojas (paraciclista
+  peruana, presentada como para-atleta de la familia HORUS), a pedido
+  explícito. No se tocó ninguna otra sección, ni colores, ni layout, ni
+  tipografía/@font-face — se reutilizaron las mismas clases y estilos que ya
+  tenía esta sección. Cambios de estructura, ambos menores y señalados en la
+  conversación:
+  - Se quitó la línea de subtítulo bajo el titular (existía para Rosa: "Una
+    historia que inspira a nuestra comunidad.") porque no se proporcionó un
+    texto equivalente para Karla — no se inventó un reemplazo.
+  - El "cierre destacado" que sí se proporcionó se insertó al final del
+    bloque de texto reutilizando la misma clase "subtitle" (itálica, mismo
+    tamaño/color) que ya usaba esta sección — no se creó ningún estilo nuevo.
+  - Se quitó la línea "Fuente: ..." porque este contenido no vino de una
+    fuente pública citable, a diferencia del resto de la edición.
+  ============================================================================
+-->
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>HORUS Newsletter — Septiembre 2026</title>
+<!--[if mso]>
+<style type="text/css">
+  table { border-collapse: collapse; }
+  .fallback-font { font-family: Arial, Helvetica, sans-serif !important; }
+</style>
+<![endif]-->
+<style type="text/css">
+  /* Mejora progresiva: @font-face solo lo aplican los clientes que soportan <style>
+     en <head> y carga de fuentes locales (Apple Mail, iOS/Android Mail, Gmail en
+     iOS/Android, la mayoría de navegadores). Outlook de escritorio (motor Word) y
+     Gmail webmail clásico lo ignoran y usan directamente el fallback del stack. */
+
+  /* Lemon Milk — títulos (fonts/LEMONMILK-*.otf) */
+  @font-face {
+    font-family: 'Lemon Milk';
+    src: url('fonts/LEMONMILK-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Lemon Milk';
+    src: url('fonts/LEMONMILK-RegularItalic.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Lemon Milk';
+    src: url('fonts/LEMONMILK-Light.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Lemon Milk';
+    src: url('fonts/LEMONMILK-LightItalic.otf') format('opentype');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Lemon Milk';
+    src: url('fonts/LEMONMILK-Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Lemon Milk';
+    src: url('fonts/LEMONMILK-MediumItalic.otf') format('opentype');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Lemon Milk';
+    src: url('fonts/LEMONMILK-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Lemon Milk';
+    src: url('fonts/LEMONMILK-BoldItalic.otf') format('opentype');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  /* Geometria — cuerpo (fonts/Geometria*.ttf). Nota: en fonts/ no hay un archivo de
+     itálica para el peso Regular (400) ni para Medium en redonda — el navegador que
+     no encuentre una cara exacta genera una itálica sintética a partir de la recta
+     más cercana; no es un error, es el comportamiento estándar de CSS. */
+  @font-face {
+    font-family: 'Geometria';
+    src: url('fonts/Geometria.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Geometria';
+    src: url('fonts/Geometria-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Geometria';
+    src: url('fonts/Geometria-ThinItalic.ttf') format('truetype');
+    font-weight: 100;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Geometria';
+    src: url('fonts/Geometria-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Geometria';
+    src: url('fonts/Geometria-LightItalic.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Geometria';
+    src: url('fonts/Geometria-MediumItalic.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Geometria';
+    src: url('fonts/Geometria-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Geometria';
+    src: url('fonts/Geometria-BoldItalic.ttf') format('truetype');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Geometria';
+    src: url('fonts/Geometria-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Geometria';
+    src: url('fonts/Geometria-ExtraBoldItalic.ttf') format('truetype');
+    font-weight: 800;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .outer-wrap { width: 100% !important; }
+    .px { padding-left: 24px !important; padding-right: 24px !important; }
+    .hero { font-size: 30px !important; }
+    .h1 { font-size: 22px !important; }
+    .h2 { font-size: 19px !important; }
+    .subtitle { font-size: 15px !important; }
+    .body-copy { font-size: 14px !important; line-height: 1.75 !important; }
+    .section-pad { padding-top: 48px !important; padding-bottom: 48px !important; }
+  }
+</style>
+</head>
+<body style="margin:0; padding:0; background-color:#000000; font-family:'Geometria','Century Gothic',Futura,Arial,Helvetica,sans-serif;">
+
+  <!-- Preheader (texto de vista previa, oculto en el cuerpo del correo) -->
+  <div style="display:none; max-height:0; overflow:hidden; opacity:0;">
+    <!-- EDITAR: resume la edición en una frase, aparece junto al asunto en la bandeja de entrada -->
+    Este mes: fabricación digital en 24–48 horas, la historia de Karla Rojas y la Academia IPD Paradeportes.
+  </div>
+
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#000000;">
+    <tr>
+      <td align="center" style="padding:0;">
+
+        <table role="presentation" width="520" cellpadding="0" cellspacing="0" class="outer-wrap" style="width:520px; max-width:520px;">
+
+          <!-- ===================== HEADER (negro) ===================== -->
+          <tr>
+            <td class="px section-pad" style="background-color:#000000; padding:64px 48px 40px 48px; text-align:center;">
+              <!-- Logo oficial Horus (versión blanca, para fondo negro). Fuente: horusleg.com -->
+              <img src="https://horusleg.com/__l5e/assets-v1/53b42cb3-7662-4ed2-aca8-a5eb2c7a4dc7/horus-logo-white-full.png" alt="HORUS Prosthetics" width="130" style="width:130px; max-width:50%; height:auto; display:block; margin:0 auto 26px auto; border:0;">
+              <p style="margin:0; font-family:'Lemon Milk','Arial Black',Impact,'Franklin Gothic Bold',Arial,Helvetica,sans-serif; font-size:11px; letter-spacing:7px; color:#FFFFFF; text-transform:uppercase;">Newsletter</p>
+              <p style="margin:8px 0 0 0; font-size:11px; letter-spacing:3px; color:#7A7A7A; text-transform:uppercase;">Edición Septiembre 2026</p>
+            </td>
+          </tr>
+
+          <!-- ===================== INTRO (blanco) ===================== -->
+          <tr>
+            <td class="px section-pad" style="background-color:#FFFFFF; padding:56px 48px 56px 48px;">
+              <p class="body-copy" style="margin:0; font-size:17px; line-height:1.75; color:#000000; letter-spacing:0.1px;">
+                Cada mes, la mejor forma de hablar de tecnología es a través de las
+                personas que la usan. Esta edición reúne un proceso que afinamos
+                pieza por pieza, una historia que nos recuerda por qué existimos,
+                y una comunidad a la que sumarnos.
+              </p>
+            </td>
+          </tr>
+
+          <!-- ===================== SECCIÓN 01: INNOVACIÓN HORUS (negro) ===================== -->
+          <tr>
+            <td class="px section-pad" style="background-color:#000000; padding:64px 48px 0 48px;">
+              <p style="margin:0 0 6px 0; font-family:'Lemon Milk','Arial Black',Impact,'Franklin Gothic Bold',Arial,Helvetica,sans-serif; font-size:12px; letter-spacing:2px; color:#5C5C5C;">01</p>
+              <p style="margin:0 0 28px 0; font-family:'Lemon Milk','Arial Black',Impact,'Franklin Gothic Bold',Arial,Helvetica,sans-serif; font-size:11px; letter-spacing:3px; color:#FFFFFF; text-transform:uppercase; font-weight:bold;">Innovación Horus</p>
+              <h1 class="hero" style="margin:0 0 18px 0; font-family:'Lemon Milk','Arial Black',Impact,'Franklin Gothic Bold',Arial,Helvetica,sans-serif; font-size:38px; line-height:1.12; letter-spacing:-0.5px; color:#FFFFFF; font-weight:normal;">De meses a horas.</h1>
+              <p class="subtitle" style="margin:0 0 18px 0; font-size:18px; line-height:1.55; color:#C9C9C9;">Cómo Horus está transformando el proceso de fabricación de una prótesis.</p>
+              <p style="margin:0 0 40px 0; font-size:13px; line-height:1.6; color:#7A7A7A; font-style:italic;">Un proceso construido junto a un protésico alemán con 46 años de oficio, hoy convertido en software.</p>
+            </td>
+          </tr>
+          <tr>
+            <td style="background-color:#000000; padding:0;">
+              <!-- EDITAR ANTES DE ENVIAR: esta ruta es relativa (images/...), sirve para previsualizar en el
+                   navegador/Live Server, pero los clientes de correo NO pueden cargar imágenes desde tu
+                   computadora. Antes de pegar este HTML en Mailchimp/Brevo, sube este archivo a la librería
+                   de imágenes de tu plataforma de envío (o a Cloudinary) y reemplaza el src por esa URL
+                   pública — ver README.md, sección "Cómo editarlo en VS Code". -->
+              <img src="images/innovacion-horus-proceso-digital.png" width="520" alt="Render 3D del proceso de diseño digital de Horus: modelo de un componente protésico visualizado en el software interno de fabricación, sobre una grilla de referencia" style="width:100%; max-width:520px; height:auto; display:block; border:0;">
+            </td>
+          </tr>
+          <tr>
+            <td class="px section-pad" style="background-color:#000000; padding:40px 48px 64px 48px;">
+              <p class="body-copy" style="margin:0 0 20px 0; font-size:15px; line-height:1.85; color:#C9C9C9; letter-spacing:0.1px;">
+                Durante décadas, conseguir una prótesis funcional en el Perú ha
+                significado esperar. En Horus decidimos que ese tiempo se podía
+                comprimir sin sacrificar precisión — y para lograrlo, no empezamos
+                por la tecnología, sino por el conocimiento de una persona:
+                <strong style="color:#FFFFFF;">Andreas Lehmann</strong>, protésico
+                alemán con <strong style="color:#FFFFFF;">46 años de experiencia</strong>,
+                cuyo criterio clínico fue el punto de partida para digitalizar cada
+                paso del proceso.
+              </p>
+              <p class="body-copy" style="margin:0 0 20px 0; font-size:15px; line-height:1.85; color:#C9C9C9; letter-spacing:0.1px;">
+                El resultado es un flujo de trabajo <strong style="color:#FFFFFF;">100%
+                digital</strong> que hoy nos permite entregar una prótesis en
+                <strong style="color:#FFFFFF;">24 a 48 horas</strong>. No es una
+                promesa: es el proceso que ya ha devuelto movilidad a
+                <strong style="color:#FFFFFF;">más de 80 personas</strong>, con un
+                <strong style="color:#FFFFFF;">98% de satisfacción</strong> reportada.
+              </p>
+              <p class="body-copy" style="margin:0 0 36px 0; font-size:15px; line-height:1.85; color:#C9C9C9; letter-spacing:0.1px;">
+                Todavía no vamos a contarte qué componente estrenamos este mes —
+                eso lo definimos junto al equipo técnico de Horus. Por ahora,
+                queríamos que conocieras lo que hace posible que, cuando llegue
+                ese componente, esté en tus manos en menos de dos días.
+              </p>
+              <!-- EDITAR: confirma a qué URL debe apuntar este enlace (horusleg.com, WhatsApp, formulario) -->
+              <p style="margin:0 0 14px 0;">
+                <a href="#" style="color:#FFFFFF; text-decoration:none; border-bottom:1px solid #FFFFFF; padding-bottom:4px; font-family:'Geometria','Century Gothic',Futura,Arial,Helvetica,sans-serif; font-size:12px; font-weight:bold; letter-spacing:1.5px; text-transform:uppercase;">Conoce nuestro proceso&nbsp;&rarr;</a>
+              </p>
+              <p style="margin:0; font-size:11px; color:#4D4D4D; letter-spacing:0.3px;">Fuente: horusleg.com/nosotros</p>
+            </td>
+          </tr>
+
+          <!-- ===================== SECCIÓN 02: HISTORIAS QUE CAMBIAN (blanco) ===================== -->
+          <tr>
+            <td class="px section-pad" style="background-color:#FFFFFF; padding:64px 48px 0 48px;">
+              <p style="margin:0 0 6px 0; font-family:'Lemon Milk','Arial Black',Impact,'Franklin Gothic Bold',Arial,Helvetica,sans-serif; font-size:12px; letter-spacing:2px; color:#999999;">02</p>
+              <p style="margin:0 0 28px 0; font-family:'Lemon Milk','Arial Black',Impact,'Franklin Gothic Bold',Arial,Helvetica,sans-serif; font-size:11px; letter-spacing:3px; color:#000000; text-transform:uppercase; font-weight:bold;">Historias que cambian</p>
+              <h1 class="h1" style="margin:0 0 32px 0; font-family:'Lemon Milk','Arial Black',Impact,'Franklin Gothic Bold',Arial,Helvetica,sans-serif; font-size:27px; line-height:1.28; letter-spacing:-0.2px; color:#000000; font-weight:normal;">Karla Rojas: pedalear para ir más lejos</h1>
+            </td>
+          </tr>
+          <tr>
+            <td class="px section-pad" style="background-color:#FFFFFF; padding:0 48px 64px 48px;">
+              <p class="body-copy" style="margin:0 0 20px 0; font-size:15px; line-height:1.85; color:#1A1A1A; letter-spacing:0.1px;">
+                Karla Rojas es paraciclista peruana, madre y emprendedora. Hoy forma
+                parte de la familia HORUS como para-atleta y continúa construyendo
+                una carrera deportiva que busca llevarla cada vez más lejos.
+              </p>
+              <p class="body-copy" style="margin:0 0 20px 0; font-size:15px; line-height:1.85; color:#1A1A1A; letter-spacing:0.1px;">
+                Su historia comenzó mucho antes de las competencias. A los 14 años
+                fue diagnosticada con cáncer y, durante años, atravesó múltiples
+                intervenciones en su pierna. En 2023 tomó la decisión de amputarla
+                y comenzar una nueva etapa con una prótesis externa, buscando
+                recuperar movilidad, autonomía y libertad.
+              </p>
+              <p class="body-copy" style="margin:0 0 20px 0; font-size:15px; line-height:1.85; color:#1A1A1A; letter-spacing:0.1px;">
+                Después de la amputación volvió a montar bicicleta. Al principio
+                tuvo que aprender nuevamente a mantener el equilibrio y adaptar su
+                forma de pedalear. Entrenó con recursos limitados, incluso
+                utilizando una bicicleta prestada, hasta convertir el ciclismo en
+                una parte fundamental de su vida.
+              </p>
+              <p class="body-copy" style="margin:0 0 28px 0; font-size:15px; line-height:1.85; color:#1A1A1A; letter-spacing:0.1px;">
+                Hoy, Karla compite y representa al Perú en el paraciclismo. En 2026
+                destacó internacionalmente en la Copa Brasil de Ciclismo y
+                Paraciclismo de Pista, fortaleciendo su camino hacia nuevos
+                desafíos deportivos.
+              </p>
+              <p class="subtitle" style="margin:0 0 10px 0; font-size:16px; line-height:1.5; color:#4D4D4D; font-style:italic;">En HORUS creemos que una prótesis no debería definir hasta dónde puede llegar una persona. Debe ser una herramienta para hacerlo posible.</p>
+              <p class="subtitle" style="margin:0; font-size:16px; line-height:1.5; color:#4D4D4D; font-style:italic;">Karla sigue pedaleando. Y cada kilómetro es una nueva historia que cambia.</p>
+            </td>
+          </tr>
+
+          <!-- ===================== SECCIÓN 03: COMUNIDAD EN MOVIMIENTO (negro) ===================== -->
+          <tr>
+            <td class="px section-pad" style="background-color:#000000; padding:64px 48px 0 48px;">
+              <p style="margin:0 0 6px 0; font-family:'Lemon Milk','Arial Black',Impact,'Franklin Gothic Bold',Arial,Helvetica,sans-serif; font-size:12px; letter-spacing:2px; color:#5C5C5C;">03</p>
+              <p style="margin:0 0 28px 0; font-family:'Lemon Milk','Arial Black',Impact,'Franklin Gothic Bold',Arial,Helvetica,sans-serif; font-size:11px; letter-spacing:3px; color:#FFFFFF; text-transform:uppercase; font-weight:bold;">Comunidad en movimiento</p>
+              <h1 class="h1" style="margin:0 0 32px 0; font-family:'Lemon Milk','Arial Black',Impact,'Franklin Gothic Bold',Arial,Helvetica,sans-serif; font-size:27px; line-height:1.28; letter-spacing:-0.2px; color:#FFFFFF; font-weight:normal;">Academia IPD Paradeportes: una puerta gratuita al deporte adaptado</h1>
+            </td>
+          </tr>
+          <tr>
+            <td class="px section-pad" style="background-color:#000000; padding:0 48px 64px 48px;">
+              <p class="body-copy" style="margin:0 0 20px 0; font-size:15px; line-height:1.85; color:#C9C9C9; letter-spacing:0.1px;">
+                La Academia IPD Paradeportes es un programa gratuito del Instituto
+                Peruano del Deporte dirigido a niñas, niños y adolescentes con
+                discapacidad. Ofrece disciplinas adaptadas como fútbol y básquetbol
+                para personas con discapacidad intelectual, tenis adaptado,
+                para-atletismo y para-natación.
+              </p>
+              <p class="body-copy" style="margin:0 0 32px 0; font-size:15px; line-height:1.85; color:#C9C9C9; letter-spacing:0.1px;">
+                <!-- EDITAR: si consigues sede, horario o fecha de inscripción confirmados para esta edición, reemplaza este párrafo con ese detalle puntual -->
+                Las sedes, horarios y cupos disponibles varían y se confirman
+                directamente con el IPD — revisa su portal oficial antes de
+                inscribirte o de compartir la convocatoria.
+              </p>
+              <p style="margin:0 0 14px 0;">
+                <a href="https://appweb.ipd.gob.pe/academia/web/" style="color:#FFFFFF; text-decoration:none; border-bottom:1px solid #FFFFFF; padding-bottom:4px; font-family:'Geometria','Century Gothic',Futura,Arial,Helvetica,sans-serif; font-size:12px; font-weight:bold; letter-spacing:1.5px; text-transform:uppercase;">Conoce la Academia IPD Paradeportes&nbsp;&rarr;</a>
+              </p>
+              <p style="margin:0; font-size:11px; color:#4D4D4D; letter-spacing:0.3px;">Fuente: Instituto Peruano del Deporte (gob.pe/institucion/ipd)</p>
+            </td>
+          </tr>
+
+          <!-- ===================== SECCIÓN 04: ¿SABÍAS QUE...? (blanco) ===================== -->
+          <tr>
+            <td class="px section-pad" style="background-color:#FFFFFF; padding:64px 48px 64px 48px;">
+              <p style="margin:0 0 28px 0; font-family:'Lemon Milk','Arial Black',Impact,'Franklin Gothic Bold',Arial,Helvetica,sans-serif; font-size:11px; letter-spacing:3px; color:#000000; text-transform:uppercase; font-weight:bold;">¿Sabías que...?</p>
+              <h2 class="h2" style="margin:0 0 22px 0; font-family:'Lemon Milk','Arial Black',Impact,'Franklin Gothic Bold',Arial,Helvetica,sans-serif; font-size:22px; line-height:1.32; letter-spacing:-0.2px; color:#000000; font-weight:normal;">La preparación para una prótesis empieza antes de recibirla</h2>
+              <p class="body-copy" style="margin:0 0 16px 0; font-size:15px; line-height:1.85; color:#1A1A1A; letter-spacing:0.1px;">
+                Caminar exige fuerza de cadera, un tronco estable y buen
+                equilibrio — por eso la fisioterapia preprotésica, con
+                ejercicios de movilidad, fuerza y equilibrio idealmente
+                cinco días por semana, hace que la adaptación posterior sea
+                más rápida y más segura.
+              </p>
+              <p style="margin:0 0 18px 0; font-size:13px; line-height:1.6; color:#666666; font-style:italic;">
+                Este contenido es educativo y no reemplaza una evaluación
+                médica o fisioterapéutica profesional.
+              </p>
+              <p style="margin:0; font-size:11px; color:#999999; letter-spacing:0.3px;">Fuente: horusleg.com/biblioteca/fisioterapia-preprotesica</p>
+            </td>
+          </tr>
+
+          <!-- ===================== FOOTER (negro) ===================== -->
+          <tr>
+            <td class="px section-pad" style="background-color:#000000; padding:64px 48px 48px 48px; text-align:center;">
+              <p style="margin:0 0 10px 0; font-family:'Geometria','Century Gothic',Futura,Arial,Helvetica,sans-serif; font-size:13px; letter-spacing:2px; color:#FFFFFF; text-transform:uppercase; font-weight:bold;">Horus Prosthetics</p>
+              <p style="margin:0 0 28px 0; font-size:13px; line-height:1.6; color:#C9C9C9; letter-spacing:0.3px;">
+                Caminemos juntos, un paso a la vez.
+              </p>
+              <p style="margin:0 0 20px 0; font-size:11px; color:#7A7A7A; letter-spacing:0.5px;">
+                Horus Prosthetics · Lima, Perú
+              </p>
+              <p style="margin:0 0 24px 0; font-size:11px; letter-spacing:0.5px;">
+                <!-- EDITAR: confirma que estos enlaces siguen vigentes antes de enviar -->
+                <a href="https://horusleg.com" style="color:#FFFFFF; text-decoration:none; border-bottom:1px solid #4D4D4D; margin:0 10px;">Web</a>
+                <span style="color:#4D4D4D;">&middot;</span>
+                <a href="https://www.facebook.com/horusprosthetics/" style="color:#FFFFFF; text-decoration:none; border-bottom:1px solid #4D4D4D; margin:0 10px;">Facebook</a>
+                <span style="color:#4D4D4D;">&middot;</span>
+                <a href="https://instagram.com/horus_protesis/" style="color:#FFFFFF; text-decoration:none; border-bottom:1px solid #4D4D4D; margin:0 10px;">Instagram</a>
+                <span style="color:#4D4D4D;">&middot;</span>
+                <a href="https://www.tiktok.com/@horus_prosthetics" style="color:#FFFFFF; text-decoration:none; border-bottom:1px solid #4D4D4D; margin:0 10px;">TikTok</a>
+              </p>
+              <p style="margin:0; font-size:10px; color:#4D4D4D; line-height:1.7;">
+                Recibes este correo porque te suscribiste a las novedades de Horus Prosthetics.<br>
+                <!-- EDITAR: tu plataforma de envío (Mailchimp/Brevo) inserta este enlace automáticamente -->
+                <a href="{{unsubscribe}}" style="color:#4D4D4D; text-decoration:underline;">Cancelar suscripción</a>
+              </p>
+            </td>
+          </tr>
+
+        </table>
+
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>

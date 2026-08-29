@@ -1,0 +1,14 @@
+# Archivos del sistema
+.DS_Store
+**/.DS_Store
+
+# Screenshot original interno — NO publicar: muestra la interfaz de software
+# clínico interno (HorusFit) con un identificador de paciente visible. Solo
+# el recorte ya procesado (images/innovacion-horus-proceso-digital.png) se
+# usa en index.html y sí se publica.
+images/Screenshot 2026-08-28 at 15.46.22.png
+
+# Zip con la familia Geometria completa — index.html no lo referencia (usa
+# los .ttf sueltos que ya están en fonts/). No aporta nada al sitio publicado
+# y solo duplica archivos de fuente innecesariamente.
+fonts/geometria.zip
