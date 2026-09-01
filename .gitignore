@@ -12,3 +12,9 @@ images/Screenshot 2026-08-28 at 15.46.22.png
 # los .ttf sueltos que ya están en fonts/). No aporta nada al sitio publicado
 # y solo duplica archivos de fuente innecesariamente.
 fonts/geometria.zip
+
+# Screenshot original de la foto de Karla — index.html usa la versión ya
+# procesada (images/historias-karla-rojas.png, con nitidez/contraste
+# ajustados). Este archivo es un duplicado sin usar, no tiene nada sensible,
+# solo se excluye para no subir un binario redundante.
+images/Screenshot 2026-09-01 at 11.15.30.png
